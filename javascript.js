@@ -65,7 +65,7 @@ document.getElementById("left").onclick = () => {
 setInterval(() => {
     atual = (atual + 1) % listaFiltrada.length;
     atualizar();
-}, 5000);
+}, 10000);
 
 /* ==================== FILTROS ==================== */
 function filtro(cat) {
