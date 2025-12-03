@@ -346,7 +346,7 @@ footer {
 
 @media(max-width: 420px) {
   nav {
-    left: 9vw;
+    left: 5vw;
     top: 100px;
     gap: 8px;
   }
