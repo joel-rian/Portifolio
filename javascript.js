@@ -1,102 +1,42 @@
-/* ==================== PROJETOS ==================== */
-const projetos = [
-    {
-        titulo: "Landing Page Burguer",
-        desc: "Um site cardápio, rápido e totalmente responsivo.",
-        img: "./img/Burguer.png",
-        link: "https://joel-rian.github.io/PAGE.HAMBURGUER/",
-        categoria: "site"
-    },
-    {
-        titulo: "Landing Page Mario",
-        desc: "Um site moderno, rápido e totalmente responsivo.",
-        img: "./img/Landing-Page.png",
-        link: "https://joel-rian.github.io/Mario-And-Luidi/",
-        categoria: "site"
-    },
-    {
-        titulo: "Aplicativo Mobile UI",
-        desc: "Interface mobile elegante e intuitiva.",
-        img: "./img/mobile.png",
-        link: "https://joel-rian.github.io/ConversaoDeMoeda/",
-        categoria: "app"
-    },
-    {
-        titulo: "Dashboard Profissional",
-        desc: "Dashboard com análises e visual limpo.",
-        img: "./img/dashboard.png",
-        link: "https://joel-rian.github.io/MinhasFinancas/",
-        categoria: "design"
-    }
-];
+document.addEventListener("DOMContentLoaded", function() {
 
-let atual = 0;
-let listaFiltrada = [...projetos];
+  const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Animações gerais de fade/slide
+        entry.target.classList.add('visible');
 
-/* ==================== ELEMENTOS ==================== */
-const img = document.getElementById("project-img");
-const title = document.getElementById("project-title");
-const desc = document.getElementById("project-desc");
-const linkBtn = document.getElementById("project-btn");
+        // LÓGICA ESPECÍFICA PARA AS BARRAS DE HABILIDADE
+        // Verifica se o elemento que entrou na tela é a seção de skills
+        if (entry.target.classList.contains('skill-section')) { // <-- MUDANÇA SUTIL AQUI
+          const progressBars = entry.target.querySelectorAll('.progress span');
+          
+          progressBars.forEach(bar => {
+            const targetWidth = bar.getAttribute('data-width');
+            
+            // Define a variável CSS na própria barra
+            bar.style.setProperty('--progress-width', targetWidth);
+            
+            // Adiciona a classe para ativar a animação
+            bar.classList.add('progress-bar-animated');
+          });
+        }
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  };
 
-function atualizar() {
-    const item = listaFiltrada[atual];
+  const observerOptions = {
+    root: null,
+    threshold: 0.2 // Aumentei um pouco para garantir que a seção esteja mais visível
+  };
 
-    img.style.opacity = 0;
-    title.style.opacity = 0;
-    desc.style.opacity = 0;
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    setTimeout(() => {
-        img.src = item.img;
-        title.textContent = item.titulo;
-        desc.textContent = item.desc;
-        linkBtn.onclick = () => window.open(item.link, "_blank");
+  const revealElements = document.querySelectorAll('.reveal');
+  revealElements.forEach(element => {
+    observer.observe(element);
+  });
 
-        img.style.opacity = 1;
-        title.style.opacity = 1;
-        desc.style.opacity = 1;
-    }, 250);
-}
-
-document.getElementById("right").onclick = () => {
-    atual = (atual + 1) % listaFiltrada.length;
-    atualizar();
-};
-
-document.getElementById("left").onclick = () => {
-    atual = (atual - 1 + listaFiltrada.length) % listaFiltrada.length;
-    atualizar();
-};
-
-/* ==================== AUTO PLAY ==================== */
-setInterval(() => {
-    atual = (atual + 1) % listaFiltrada.length;
-    atualizar();
-}, 10000);
-
-/* ==================== FILTROS ==================== */
-function filtro(cat) {
-    if (cat === "todos") {
-        listaFiltrada = [...projetos];
-    } else {
-        listaFiltrada = projetos.filter(p => p.categoria === cat);
-    }
-    atual = 0;
-    atualizar();
-}
-
-/* ==================== SIDEBAR ==================== */
-function toggleSidebar() {
-    const bar = document.getElementById("sidebar");
-    bar.style.left = bar.style.left === "0px" ? "-300px" : "0px";
-}
-
-/* ==================== INICIAR ==================== */
-atualizar();
-/* ==================== HOME ==================== */
-
-
-function home() {
-   window.location.href = "index.html";
-}
-
+});

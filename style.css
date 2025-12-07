@@ -1,10 +1,15 @@
 /* ============================================================
-   RESET
+   RESET & CONFIGURAÇÕES GERAIS
 ============================================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Adiciona rolagem suave para links internos como #projetos */
 }
 
 body {
@@ -15,71 +20,7 @@ body {
 }
 
 /* ============================================================
-   PARALLAX
-============================================================ */
-.backone {
-  background: url("./img/JavaScript.png") fixed no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 23rem;
-  filter: brightness(0.55) contrast(1.1);
-}
-
-.backtwo {
-  background: url("https://i.pinimg.com/1200x/13/19/aa/1319aa6258aaf17ae35c30c5c08877a7.jpg") fixed no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 23rem;
-  filter: brightness(0.55) contrast(1.1);
-}
-
-.backthree {
-  background: url("https://i.pinimg.com/736x/68/d1/85/68d1858ea368bb8dbd4b4d5f241ece3c.jpg") fixed no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 23rem;
-  filter: brightness(0.55) contrast(1.1);
-}
-
-.backfour {
-  background: url("https://i.pinimg.com/736x/e1/e7/eb/e1e7ebf4ee3058a3596629ded916d0b2.jpg") fixed no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 23rem;
-  filter: brightness(0.55) contrast(1.1);
-}
-
-.backfive {
-  background: url("https://i.pinimg.com/1200x/14/4b/5b/144b5b0b5a956c002700f559414bc39a.jpg") fixed no-repeat center;
-  background-size: cover;
-  width: 100%;
-  height: 23rem;
-  filter: brightness(0.55) contrast(1.1);
-}
-/* ============================================================
-   BACKGROUND CLEAN FUTURISTA
-============================================================ */
-.bg-animado {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, #041225, #000);
-  opacity: 0.8;
-
-  background-size: 160% 160%;
-  animation: pulse 12s infinite alternate;
-  z-index: -1;
-}
-
-@keyframes pulse {
-  0% { filter: brightness(1); }
-  100% { filter: brightness(1.25); }
-}
-
-/* ============================================================
-   TITULO NICKNAME
+   ELEMENTOS PRINCIPAIS (Header, Hero, Seções)
 ============================================================ */
 .nickname h1 {
   font-size: 2.2rem;
@@ -90,16 +31,12 @@ body {
   text-shadow: 0 0 5px rgba(0, 180, 255, 0.4);
 }
 
-/* ============================================================
-   NAV CLEAN BLUEPRINT
-============================================================ */
 nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: repeat(2, auto);
   grid-auto-flow: column;
   gap: 25px;
-
   position: absolute;
   top: 70px;
   right: 60px;
@@ -108,66 +45,22 @@ nav {
 nav a {
   text-align: center;
   text-decoration: none;
-
   padding: 10px 18px;
   border-radius: 6px;
-
   font-weight: 500;
   color: #d9f2ff;
-
   background: rgba(0, 95, 145, 0.12);
   border: 1px solid rgba(0, 150, 255, 0.25);
   backdrop-filter: blur(8px);
-
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 nav a:hover {
   background: rgba(0, 150, 255, 0.25);
   border-color: rgba(0, 200, 255, 0.5);
-  transform: scale(1.1);
-  translate: 0.3 ease;
+  transform: scale(1.05);
 }
 
-/* ANIMAÇÃO SUAVE DO TEXTO DO NAV (slide + scale) */
-.slide-in {
-    opacity: 0;
-    transform: translateY(10px) scale(0.9);
-    animation: slideIn 0.45s ease forwards;
-}
-
-.slide-out {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    animation: slideOut 0.35s ease forwards;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px) scale(0.85);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes slideOut {
-    from {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.85);
-    }
-}
-
-
-/* ============================================================
-   HERO
-============================================================ */
 .hero {
   padding: 140px 60px;
   max-width: 700px;
@@ -187,47 +80,41 @@ nav a:hover {
   color: #c6e6ff;
 }
 
-/* BOTÕES */
-
 .btns {
-  margin-top: 10px;
+  margin-top: 20px;
 }
+
 .btns a {
   display: inline-block;
   margin-right: 15px;
   padding: 12px 25px;
-
   border-radius: 8px;
   text-decoration: none;
-
   background: rgba(0, 120, 180, 0.15);
   border: 1px solid rgba(0, 160, 255, 0.35);
   color: #e6f6ff;
-
   transition: 0.25s ease;
 }
 
 .btns a:hover {
   background: rgba(0, 150, 255, 0.3);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* ============================================================
-   SERVIÇOS
-============================================================ */
-.servicos {
+/* Estilos Padrão das Seções */
+.servicos, .projetos-recentes, .sobre, .skills, .carater {
   padding: 100px 60px;
   text-align: center;
 }
 
-.servicos h2 {
+.servicos h2, .projetos-recentes h2, .sobre h2, .skills h3 {
   font-size: 2.5rem;
-  margin-bottom: 35px;
+  margin-bottom: 50px;
   color: #dff3ff;
   text-shadow: 0 0 6px rgba(0, 180, 255, 0.4);
-  
 }
 
+/* Cards (Serviços) */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -237,54 +124,123 @@ nav a:hover {
 .card {
   padding: 25px;
   border-radius: 12px;
-
   background: rgba(0, 40, 70, 0.2);
   border: 1px solid rgba(0, 120, 255, 0.2);
   backdrop-filter: blur(10px);
-
   color: #d9eeff;
   transition: 0.25s ease;
 }
 
 .card:hover {
   background: rgba(0, 80, 140, 0.28);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* ============================================================
-   SOBRE
-============================================================ */
-.sobre {
-  padding: 80px 60px;
+/* Cards (Projetos) */
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projeto-card {
+  background: rgba(0, 40, 70, 0.2);
+  border: 1px solid rgba(0, 120, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  text-align: left;
+  overflow: hidden;
+  transition: transform 0.3s ease, background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.projeto-card:hover {
+  background: rgba(0, 80, 140, 0.35);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.projeto-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.1);
+  border-bottom: 1px solid rgba(0, 120, 255, 0.2);
+}
+
+.projeto-info {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.projeto-info h3 {
+  font-size: 1.6rem;
+  color: #cfe8ff;
+  margin-bottom: 15px;
+}
+
+.projeto-info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #c6e6ff;
+  opacity: 0.85;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+.projeto-links {
+  display: flex;
+  gap: 15px;
+  margin-top: auto;
+}
+
+.projeto-links a {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  background: rgba(0, 120, 180, 0.15);
+  border: 1px solid rgba(0, 160, 255, 0.35);
+  color: #e6f6ff;
+  transition: 0.25s ease;
   text-align: center;
+  flex-grow: 1;
 }
 
-.sobre h2 {
-  font-size: 2.7rem;
-  margin-bottom: 35px;
-  color: #dff3ff;
+.projeto-links a:hover {
+  background: rgba(0, 150, 255, 0.3);
+  transform: scale(1.05);
 }
 
+.projeto-links a:last-child {
+  background: transparent;
+  border: 1px solid rgba(0, 160, 255, 0.35);
+}
+
+.projeto-links a:last-child:hover {
+  background: rgba(0, 150, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Outras Seções */
 .texto-sobre p {
   margin-bottom: 18px;
   font-size: 1.2rem;
   line-height: 1.6;
   opacity: 0.88;
   color: #cce6ff;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
-/* ============================================================
-   SKILLS
-============================================================ */
-.skills {
-  padding: 80px 60px;
-}
-
-.skills h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #dff3ff;
-  text-align: center;
+.skill p {
+  margin-bottom: 5px;
 }
 
 .progress {
@@ -296,39 +252,45 @@ nav a:hover {
   border: 1px solid rgba(0, 130, 255, 0.4);
 }
 
-.progress span {
-  display: block;
+.progress span { display: block;
   height: 100%;
   background: linear-gradient(90deg, #00c4ff, #0077ff);
+  
+  /* ================================================= */
+  /* ================ ADIÇÕES PARA ANIMAÇÃO ============ */
+  /* ================================================= */
+  
+  /* 1. Estado inicial: a barra começa com largura 0 */
+  width: 0%; 
+  
+  /* 2. Define a transição suave para a propriedade 'width' */
+  /* A animação durará 1.5 segundos com um efeito de desaceleração no final */
+  transition: width 1.5s ease-out;
+}
+
+.progress span.progress-bar-animated {
+  width: var(--progress-width);
+}
+
+.valores p {
+  margin-bottom: 10px;
 }
 
 /* ============================================================
-   CARÁTER
-============================================================ */
-.valores {
-  padding: 50px 60px;
-  font-size: 1.35rem;
-  color: #cfeaff;
-  opacity: 0.9;
-  text-align: center;
-  list-style: square;
-  list-style-position: inside;
-}
-
-/* ============================================================
-   FOTO FIXA
+   FOOTER & ELEMENTOS FIXOS
 ============================================================ */
 .Joel {
-  border-radius: 100px;
-  height: 100px;
-
+  border-radius: 50%;
+  height: 80px; /* Reduzido para telas menores */
+  width: 80px;  /* Reduzido para telas menores */
+  object-fit: cover;
   position: fixed;
   right: 20px;
   bottom: 20px;
-
   border: 2px solid rgba(0, 140, 255, 0.55);
   box-shadow: 0 0 12px rgba(0, 150, 255, 0.4);
   transition: 0.25s;
+  z-index: 100;
 }
 
 .Joel:hover {
@@ -336,64 +298,184 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* ============================================================
-   FOOTER
-============================================================ */
 footer {
   margin-top: 60px;
   text-align: center;
   padding: 35px;
   color: #b8d9ff;
-
   opacity: 0.8;
   background: rgba(0, 50, 90, 0.22);
   border-top: 1px solid rgba(0, 130, 255, 0.25);
 }
 
 /* ============================================================
-   MOBILE
+   RESPONSIVIDADE TOTAL (Mobile-First Approach Refinements)
 ============================================================ */
-@media(max-width: 650px) {
 
-  nav {
-    top: 110px;
-    right: 40px;
-    gap: 12px;
-    transform: scale(0.9);
+/* Breakpoint para Tablets e Celulares Maiores (Paisagem) */
+@media (max-width: 992px) {
+  .nickname h1 {
+    margin-left: 40px;
   }
 
-  .nickname h1 {
-   
-    margin-left: 30vw;
-    margin-top: 30px;
+  nav {
+    right: 40px;
+    gap: 15px;
   }
 
   .hero {
-    padding: 150px 25px;
-    text-align: center;
+    padding: 120px 40px;
   }
 
-  .btns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10vh;
+  .servicos, .projetos-recentes, .sobre, .skills, .carater {
+    padding: 80px 40px;
   }
 }
 
-@media(max-width: 420px) {
+/* Breakpoint Principal para Mobile (Tablets em Retrato e Celulares) */
+@media (max-width: 768px) {
+  /* Desativa o efeito parallax em mobile para melhor performance */
+  .backone, .backtwo, .backthree, .backfour, .backfive {
+    background-attachment: scroll;
+  }
+
+  .nickname h1 {
+    text-align: center;
+    margin-left: 0;
+    margin-top: 30px;
+    font-size: 2rem;
+  }
+
+  /* Transforma a navegação em um layout mais simples */
   nav {
-    left: 5vw;
-    top: 100px;
-    gap: 8px;
+    position: static; /* Remove o posicionamento absoluto */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    width: 90%;
+    margin: 30px auto 0; /* Centraliza e adiciona espaço */
+    gap: 10px;
+  }
+
+  nav a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 80px 25px 60px; /* Reduz o padding superior */
+    text-align: center;
+    max-width: 100%;
   }
 
   .hero h2 {
-    font-size: 2.3rem;
+    font-size: 2.5rem; /* Reduz o título principal */
+  }
+
+  .hero p {
+    font-size: 1.1rem;
   }
 
   .btns {
-    margin-top: 10vh;
-    margin-left: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  .btns a {
+    width: 90%;
+    max-width: 300px;
+    text-align: center;
+    margin-right: 0;
+  }
+
+  .servicos, .projetos-recentes, .sobre, .skills, .carater {
+    padding: 80px 25px;
+  }
+
+  .servicos h2, .projetos-recentes h2, .sobre h2, .skills h3 {
+    font-size: 2.2rem;
+  }
+
+  .texto-sobre p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Breakpoint para Celulares Pequenos */
+@media (max-width: 480px) {
+  .nickname h1 {
+    font-size: 1.8rem;
+  }
+
+  nav {
+    grid-template-columns: 1fr 1fr; /* Força 2 colunas */
+  }
+
+  .hero h2 {
+    font-size: 2.1rem;
+  }
+
+  .projetos-grid {
+    /* Garante que os cards não fiquem menores que o mínimo */
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .Joel {
+    height: 60px;
+    width: 60px;
+    right: 15px;
+    bottom: 15px;
+  }
+}
+
+/* ============================================================
+   ANIMAÇÕES DE SCROLL REVEAL (Scroll-Triggered Animations)
+============================================================ */
+
+/*
+  Classe base para todos os elementos que serão animados.
+  Eles começam invisíveis e com a transição já definida.
+*/
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(100px); /* Começa 100px para baixo */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Classes de direção da animação */
+.reveal-from-top {
+  transform: translateY(-50px); /* Começa 50px para cima */
+}
+
+.reveal-from-bottom {
+  transform: translateY(50px); /* Começa 50px para baixo */
+}
+
+.reveal-from-left {
+  transform: translateX(-100px); /* Começa 100px para a esquerda */
+}
+
+.reveal-from-right {
+  transform: translateX(100px); /* Começa 100px para a direita */
+}
+
+/*
+  A classe 'visible' é a que o JavaScript vai adicionar.
+  Ela torna o elemento 100% visível e o move para sua posição original.
+*/
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+/* Desativar animações em telas mobile para melhor performance, se desejado */
+/* Você pode remover este bloco se quiser manter as animações no celular */
+@media (max-width: 768px) {
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
