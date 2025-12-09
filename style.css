@@ -128,9 +128,17 @@ nav a:hover {
   align-items: center;
   justify-content: center;
 
-  /* Efeito meia lua */
-  -webkit-mask-image: radial-gradient(ellipse at top, white 0%, white 45%, transparent 100%);
-  mask-image: radial-gradient(ellipse at top, white 0%, white 50%, transparent 100%);
+  /* Máscara de fade estilo “meia lua” */
+  -webkit-mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 20%, 
+      white 60%, 
+      transparent 100%
+  );
+  mask-image: radial-gradient(
+      ellipse 90% 80% at 50% 20%, 
+      white 60%, 
+      transparent 100%
+  );
 }
 
 .hero-img img {
