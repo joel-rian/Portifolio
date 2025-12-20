@@ -1,29 +1,29 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
   const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Animações gerais de fade/slide
-        entry.target.classList.add('visible');
+  entry.target.classList.add('visible');
 
-        // LÓGICA ESPECÍFICA PARA AS BARRAS DE HABILIDADE
-        // Verifica se o elemento que entrou na tela é a seção de skills
-        if (entry.target.classList.contains('skill-section')) { // <-- MUDANÇA SUTIL AQUI
-          const progressBars = entry.target.querySelectorAll('.progress span');
-          
-          progressBars.forEach(bar => {
-            const targetWidth = bar.getAttribute('data-width');
-            
-            // Define a variável CSS na própria barra
-            bar.style.setProperty('--progress-width', targetWidth);
-            
-            // Adiciona a classe para ativar a animação
-            bar.classList.add('progress-bar-animated');
-          });
-        }
-        
-        observer.unobserve(entry.target);
-      }
+  if (
+    entry.target.classList.contains('skill-section') &&
+    !entry.target.dataset.animated
+  ) {
+    const progressBars = entry.target.querySelectorAll('.progress span');
+
+    progressBars.forEach(bar => {
+      const targetWidth = bar.getAttribute('data-width');
+      bar.style.setProperty('--progress-width', targetWidth);
+      bar.classList.add('progress-bar-animated');
+    });
+
+    entry.target.dataset.animated = "true";
+  }
+
+} else {
+  entry.target.classList.remove('visible');
+}
+
     });
   };
 
@@ -40,3 +40,53 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
 });
+
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const btnTopo = document.getElementById("btn-topo");
+
+  if (!sidebar) return;
+
+  sidebar.classList.toggle("active");
+
+  const aberto = sidebar.classList.contains("active");
+
+  // trava / libera scroll
+ document.body.classList.toggle("sidebar-open", aberto);
+
+
+  // esconder/mostrar botão do menu
+  if (menuToggle) {
+    menuToggle.classList.toggle("hidden", aberto);
+  }
+
+  // esconder/mostrar botão voltar ao topo
+  if (btnTopo) {
+    btnTopo.style.display = aberto ? "none" : "block";
+  }
+}
+
+
+const btnTopo = document.getElementById("btn-topo");
+
+if (btnTopo) {
+  window.addEventListener("scroll", () => {
+    const scrollAtual = window.scrollY;
+    const alturaTotal = document.documentElement.scrollHeight - window.innerHeight;
+
+    if (scrollAtual > alturaTotal * 0.5) {
+      btnTopo.classList.add("show");
+    } else {
+      btnTopo.classList.remove("show");
+    }
+  });
+
+  btnTopo.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+

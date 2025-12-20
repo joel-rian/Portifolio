@@ -16,14 +16,14 @@ body {
   font-family: "Poppins", sans-serif;
   color: #e7f1ff;
   background: #02040a;
-  overflow-x: hidden;
+  
 }
 
 /* ============================================================
    ELEMENTOS PRINCIPAIS (Header, Hero, Seções)
 ============================================================ */
 
-.header {
+header {
   width: 100%;
   padding: 25px 60px;
   display: flex;
@@ -69,19 +69,20 @@ nav a:hover {
   border-color: rgba(0, 200, 255, 0.5);
   transform: scale(1.05);
 }
+
 /* HERO EM 2 COLUNAS */
 .heromae {
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: space-around;
-  gap: 30px;
-  
+  gap: 10px;
 }
 
 /* COLUNA DE TEXTO */
 .hero {
   max-width: 600px;
-  padding-top: 300px;
+  padding-top: 40px;
 }
 
 /* TÍTULO */
@@ -130,32 +131,35 @@ nav a:hover {
   justify-content: center;
 
   /* Máscara de fade estilo “meia lua” */
-  -webkit-mask-image: radial-gradient(
-      ellipse 80% 60% at 50% 20%, 
-      white 60%, 
-      transparent 100%
-  );
-  mask-image: radial-gradient(
-      ellipse 90% 80% at 50% 20%, 
-      white 60%, 
-      transparent 100%
-  );
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%,
+      white 60%,
+      transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 20%,
+      white 60%,
+      transparent 100%);
 }
 
 .hero-img img {
   width: 100%;
   height: auto;
   object-fit: contain;
-  
+
 }
 
 /* Estilos Padrão das Seções */
-.servicos, .projetos-recentes, .sobre, .skills, .carater {
+.servicos,
+.projetos-recentes,
+.sobre,
+.skills,
+.carater {
   padding: 100px 60px;
   text-align: center;
 }
 
-.servicos h2, .projetos-recentes h2, .sobre h2, .skills h3 {
+.servicos h2,
+.projetos-recentes h2,
+.sobre h2,
+.skills h3 {
   font-size: 2.5rem;
   margin-bottom: 50px;
   color: #dff3ff;
@@ -284,7 +288,7 @@ nav a:hover {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  text-align: left;
+  text-align: center;
 }
 
 .skill p {
@@ -300,17 +304,18 @@ nav a:hover {
   border: 1px solid rgba(0, 130, 255, 0.4);
 }
 
-.progress span { display: block;
+.progress span {
+  display: block;
   height: 100%;
   background: linear-gradient(90deg, #00c4ff, #0077ff);
-  
+
   /* ================================================= */
   /* ================ ADIÇÕES PARA ANIMAÇÃO ============ */
   /* ================================================= */
-  
+
   /* 1. Estado inicial: a barra começa com largura 0 */
-  width: 0%; 
-  
+  width: 0%;
+
   /* 2. Define a transição suave para a propriedade 'width' */
   /* A animação durará 1.5 segundos com um efeito de desaceleração no final */
   transition: width 1.5s ease-out;
@@ -343,9 +348,162 @@ footer {
   border-top: 1px solid rgba(0, 130, 255, 0.25);
 }
 
+#btn-topo {
+  position: fixed;
+  left: 20px;
+  bottom: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  color: #ffffff;
+  background-color: var(--primary-light);
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+
+#btn-topo.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#btn-topo:hover {
+  background: var(--primary-light);
+  transform: translateY(-3px);
+}
+
+
+/* ============================================================
+   ANIMAÇÕES DE SCROLL REVEAL (Scroll-Triggered Animations)
+============================================================ */
+
+/*
+  Classe base para todos os elementos que serão animados.
+  Eles começam invisíveis e com a transição já definida.
+*/
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(100px);
+  /* Começa 100px para baixo */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Classes de direção da animação */
+.reveal-from-top {
+  transform: translateY(-50px);
+  /* Começa 50px para cima */
+}
+
+.reveal-from-bottom {
+  transform: translateY(50px);
+  /* Começa 50px para baixo */
+}
+
+.reveal-from-left {
+  transform: translateX(-100px);
+  /* Começa 100px para a esquerda */
+}
+
+.reveal-from-right {
+  transform: translateX(100px);
+  /* Começa 100px para a direita */
+}
+
+/*
+  A classe 'visible' é a que o JavaScript vai adicionar.
+  Ela torna o elemento 100% visível e o move para sua posição original.
+*/
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+/* BOTÃO MENU */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 4000;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: #111;
+  color: #fff;
+  padding: 25px;
+  transition: 0.3s ease;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+}
+
+body.sidebar-open {
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+/* HEADER SIDEBAR */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-sidebar {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* NAV */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.sidebar-nav a {
+  color: #fff;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.sidebar-nav a:hover {
+  color: #00e5ff;
+}
+
 /* ============================================================
    RESPONSIVIDADE TOTAL (Mobile-First Approach Refinements)
 ============================================================ */
+
+/* Mobile pequeno */
+@media (max-width: 600px) {
+  #btn-topo {
+    left: 12px;
+    bottom: 20px;
+  }
+}
 
 /* Breakpoint para Tablets e Celulares Maiores (Paisagem) */
 @media (max-width: 992px) {
@@ -359,214 +517,29 @@ footer {
   }
 
   .hero {
-    padding: 120px 40px;
+    padding: 20px 40px;
   }
 
-  .servicos, .projetos-recentes, .sobre, .skills, .carater {
+  .servicos,
+  .projetos-recentes,
+  .sobre,
+  .skills,
+  .carater {
     padding: 80px 40px;
   }
 }
 
 /* Breakpoint Principal para Mobile (Tablets em Retrato e Celulares) */
 @media (max-width: 768px) {
-  /* Desativa o efeito parallax em mobile para melhor performance */
-  .backone, .backtwo, .backthree, .backfour, .backfive {
-    background-attachment: scroll;
-  }
-
-  .nickname h1 {
-    text-align: center;
-    margin-left: 0;
-    margin-top: 30px;
-    font-size: 2rem;
-  }
-
-  /* Transforma a navegação em um layout mais simples */
-  nav {
-    position: static; /* Remove o posicionamento absoluto */
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    width: 90%;
-    margin: 30px auto 0; /* Centraliza e adiciona espaço */
-    gap: 10px;
-  }
-
-  nav a {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-
-  .hero {
-    padding: 80px 25px 60px; /* Reduz o padding superior */
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .hero h2 {
-    font-size: 2.5rem; /* Reduz o título principal */
-  }
-
-  .hero p {
-    font-size: 1.1rem;
-  }
-
-  .btns {
+  header {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 15px;
-    margin-top: 40px;
-  }
-
-  .btns a {
-    width: 90%;
-    max-width: 300px;
-    text-align: center;
-    margin-right: 0;
-  }
-
-  .servicos, .projetos-recentes, .sobre, .skills, .carater {
-    padding: 80px 25px;
-  }
-
-  .servicos h2, .projetos-recentes h2, .sobre h2, .skills h3 {
-    font-size: 2.2rem;
-  }
-
-  .texto-sobre p {
-    font-size: 1.1rem;
-  }
-}
-
-/* Breakpoint para Celulares Pequenos */
-@media (max-width: 480px) {
-  .nickname h1 {
-    font-size: 1.8rem;
-  }
-
-  nav {
-    grid-template-columns: 1fr 1fr; /* Força 2 colunas */
-  }
-
-  .hero h2 {
-    font-size: 2.1rem;
-  }
-
-  .projetos-grid {
-    /* Garante que os cards não fiquem menores que o mínimo */
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .Joel {
-    height: 60px;
-    width: 60px;
-    right: 15px;
-    bottom: 15px;
-  }
-}
-
-/* ============================================================
-   ANIMAÇÕES DE SCROLL REVEAL (Scroll-Triggered Animations)
-============================================================ */
-
-/*
-  Classe base para todos os elementos que serão animados.
-  Eles começam invisíveis e com a transição já definida.
-*/
-.reveal {
-  position: relative;
-  opacity: 0;
-  transform: translateY(100px); /* Começa 100px para baixo */
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Classes de direção da animação */
-.reveal-from-top {
-  transform: translateY(-50px); /* Começa 50px para cima */
-}
-
-.reveal-from-bottom {
-  transform: translateY(50px); /* Começa 50px para baixo */
-}
-
-.reveal-from-left {
-  transform: translateX(-100px); /* Começa 100px para a esquerda */
-}
-
-.reveal-from-right {
-  transform: translateX(100px); /* Começa 100px para a direita */
-}
-
-/*
-  A classe 'visible' é a que o JavaScript vai adicionar.
-  Ela torna o elemento 100% visível e o move para sua posição original.
-*/
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0) translateX(0);
-}
-
-/* Desativar animações em telas mobile para melhor performance, se desejado */
-/* Você pode remover este bloco se quiser manter as animações no celular */
-@media (max-width: 768px) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* ============================================================
-   RESPONSIVIDADE TOTAL — CORRIGIDA E OTIMIZADA
-============================================================ */
-
-/* LAPTOPS E TABLETS GRANDES (até 1100px) */
-@media (max-width: 1100px) {
-
-  
-  .heromae {
-    padding-top: 180px;
-    gap: 40px;
-  }
-
-  .hero h2 {
-    font-size: 2.8rem;
-  }
-
-  .hero-img {
-    width: 300px;
-  }
-}
-
-/* TABLETS (até 900px) */
-@media (max-width: 900px) {
-  .heromae {
     flex-direction: column;
-    text-align: center;
-    padding: 150px 40px 80px;
-  }
-
-  .hero {
-    padding-top: 50px;
-    max-width: 100%;
-  }
-
-  .hero-img {
-    display: block;
-    width: 260px;
-  }
-
-  .hero p {
-    font-size: 1.15rem;
-  }
-
-  .btns {
     justify-content: center;
+    position: fixed;
   }
-}
 
-/* CELULARES GRANDES (até 768px) */
-@media (max-width: 768px) {
-  .header {
+  header {
     padding: 20px;
   }
 
@@ -575,6 +548,14 @@ footer {
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
+  }
+
+  header nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
   }
 
   nav a {
@@ -603,26 +584,190 @@ footer {
     max-width: 300px;
     margin-right: 0;
   }
+
+  .nickname h1 {
+    text-align: center;
+    margin-left: 0;
+    margin-top: 30px;
+    font-size: 2rem;
+  }
+
+  /* Transforma a navegação em um layout mais simples */
+  nav {
+    position: static;
+    /* Remove o posicionamento absoluto */
+    width: 90%;
+    margin: 30px auto 0;
+    /* Centraliza e adiciona espaço */
+    gap: 10px;
+  }
+
+  nav a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 80px 25px 30px;
+    /* Reduz o padding superior */
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero h2 {
+    font-size: 2.5rem;
+    /* Reduz o título principal */
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  .btns a {
+    width: 90%;
+    max-width: 300px;
+    text-align: center;
+    margin-right: 0;
+  }
+
+  .servicos,
+  .projetos-recentes,
+  .sobre,
+  .skills,
+  .carater {
+    padding: 80px 25px;
+  }
+
+  .servicos h2,
+  .projetos-recentes h2,
+  .sobre h2,
+  .skills h3 {
+    font-size: 2.2rem;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .texto-sobre p {
+    font-size: 1.1rem;
+  }
 }
+
+/* Breakpoint para Celulares Pequenos */
+@media (max-width: 480px) {
+  .nickname h1 {
+    font-size: 1.8rem;
+  }
+
+  nav {
+    grid-template-columns: 1fr 1fr;
+    /* Força 2 colunas */
+  }
+
+  .hero h2 {
+    font-size: 2.1rem;
+  }
+
+  .projetos-grid {
+    /* Garante que os cards não fiquem menores que o mínimo */
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .Joel {
+    height: 60px;
+    width: 60px;
+    right: 15px;
+    bottom: 15px;
+  }
+}
+
+
+
+/* ============================================================
+   RESPONSIVIDADE TOTAL — CORRIGIDA E OTIMIZADA
+============================================================ */
+
+/* LAPTOPS E TABLETS GRANDES (até 1100px) */
+@media (max-width: 1100px) {
+
+  .heromae {
+    text-align: center;
+
+    gap: 40px;
+  }
+
+  .hero h2 {
+    font-size: 2.8rem;
+  }
+
+  .hero-img {
+    width: 300px;
+  }
+}
+
+/* TABLETS (até 900px) */
+@media (max-width: 900px) {
+  .heromae {
+    flex-direction: column;
+    text-align: center;
+    padding: 0px 50px 0px;
+  }
+
+  .hero {
+    padding-top: 50px;
+    max-width: 100%;
+  }
+
+  .hero-img {
+    display: block;
+    width: 260px;
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+  }
+
+  .btns {
+    justify-content: center;
+  }
+}
+
+
 
 /* CELULARES NORMAIS (até 480px) */
 @media (max-width: 480px) {
+  .hero {
+    padding-top: 20px;
+  }
 
-  .header nav {
+  header nav {
     display: none;
   }
-  .header {
+
+  header {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
   }
+
   .nickname h1 {
     font-size: 1.6rem;
   }
 
   .heromae {
-    padding: 70px 20px 50px;
+    padding: 0px 10px 0px;
   }
 
   .hero h2 {
@@ -646,11 +791,13 @@ footer {
   }
 }
 
+
 /* CELULARES PEQUENOS (até 394px) */
 @media (max-width: 399px) {
   .hero {
-    padding-top: 60px;
+    padding-top: 70px;
   }
+
   .hero h2 {
     font-size: 1.7rem;
   }
@@ -667,6 +814,6 @@ footer {
 
 @media (max-width: 337px) {
   .hero {
-    padding-top: 70px;
+    padding-top: 90px;
   }
 }

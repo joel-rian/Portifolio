@@ -12,10 +12,10 @@
 
 <body>
     <!-- TOPO + NAVEGAÇÃO -->
-    <header class="header">
+    <header class="reveal-from-top reveal">
         <div class="nickname">
             <h1>Yerijhon Rian</h1>
-            <p class="subtitle">Full Stack Developer & Especialista em Automação</p>
+            <p class="subtitle">Building Intelligent Systems to Optimize Business Operations</p>
         </div>
         <nav>
             <a href="#sobre">Sobre</a>
@@ -26,21 +26,46 @@
             <a href="https://github.com/joel-rian" target="_blank">GitHub</a>
         </nav>
     </header>
+    <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
 
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Yerijhon Rian</h2>
+            <span class="close-sidebar" onclick="toggleSidebar()">✕</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#sobre" onclick="toggleSidebar()">Sobre</a>
+            <a href="#servicos" onclick="toggleSidebar()">Serviços</a>
+            <a href="#projetos" onclick="toggleSidebar()">Projetos</a>
+            <a href="#habilidades" onclick="toggleSidebar()">Habilidades</a>
+            <a href="https://www.linkedin.com/in/yerijhonrian" target="_blank">LinkedIn</a>
+            <a href="https://github.com/joel-rian" target="_blank">GitHub</a>
+        </nav>
+    </aside>
 
     <!-- HERO -->
     <main class="heromae">
         <section class="hero reveal reveal-from-left">
-            <h2>Desenvolvedor Full Stack & Especialista em Automação</h2>
+            <h2>Full-Stack Developer & AI Automation Specialist</h2>
             <p>
-                Transformo requisitos de negócios em soluções digitais eficientes, escaláveis e automatizadas.
-                Com expertise em React, Node.js e integração de APIs, crio aplicações web que não apenas funcionam,
-                mas que <strong>eliminam tarefas manuais e impulsionam a eficiência operacional</strong>.
+                Transformo requisitos de negócio em soluções digitais <strong>escaláveis, automatizadas e orientadas a
+                    performance</strong>.
+                Utilizando React, Node.js e integração avançada de APIs, desenvolvo aplicações web capazes de
+                <strong>reduzir tarefas manuais em até 60%</strong> e
+                <strong>aumentar a eficiência operacional em até 40%</strong>,
+                permitindo que equipes foquem em decisões estratégicas em vez de processos repetitivos.
             </p>
+
             <p>
-                Meu diferencial é a implementação estratégica de automações em todo o fluxo de trabalho.
-                Ao integrar scripts e APIs no backend, reduzo erros, economizo tempo e garanto que seus sistemas
-                suportem o crescimento contínuo do seu negócio.
+                Meu diferencial está na automação inteligente de fluxos ponta a ponta.
+                Ao estruturar backends robustos e integrações automatizadas, ajudo empresas a
+                <strong>reduzir falhas operacionais em até 70%</strong>,
+                <strong>diminuir custos operacionais em até 35%</strong>
+                e garantir que os sistemas estejam preparados para
+                <strong>escalar com segurança, estabilidade e previsibilidade</strong>,
+                acompanhando o crescimento do negócio sem perda de performance.
             </p>
 
             <div class="btns">
@@ -58,35 +83,40 @@
 
     <!-- SOBRE -->
     <section class="sobre" id="sobre">
-        <h2 class="reveal reveal-from-top">Minha História</h2>
+        <h2 class="reveal reveal-from-top">Storytelling</h2>
 
         <div class="sobre-container">
             <div class="texto-sobre reveal reveal-from-bottom">
                 <p>
-                    Sou um Desenvolvedor Full Stack apaixonado por transformar ideias em soluções digitais robustas e
-                    escaláveis.
-                    Minha expertise abrange toda a arquitetura de aplicações web, desde interfaces responsivas e
-                    animadas com React
-                    até backends poderosos com Node.js e Express.js.
+                    Desenvolvedor Full-Stack e Especialista em Automação com IA, com mais de 1 ano de experiência em
+                    gestão de produção, atuando no desenvolvimento de sistemas inteligentes que automatizam fluxos de
+                    trabalho, aumentam a eficiência operacional e sustentam a escalabilidade dos negócios.
                 </p>
+
                 <p>
-                    Mas o que realmente me diferencia é minha especialização em <strong>automação de processos</strong>.
-                    Ao integrar APIs REST, scripts JavaScript e bancos de dados (MongoDB, Firebase), consigo eliminar
-                    tarefas manuais,
-                    reduzir erros e aumentar drasticamente a eficiência operacional dos sistemas que desenvolvo.
+                    Minha experiência como Gestor de Produção proporcionou contato direto com desafios operacionais
+                    reais,
+                    otimização de processos e colaboração multifuncional, influenciando de forma prática e objetiva a
+                    maneira como projeto soluções de automação confiáveis, eficientes e orientadas a resultado.
                 </p>
+
                 <p>
-                    Trabalho com metodologias ágeis (Scrum/Kanban) e tenho experiência em contato direto com clientes
-                    para alinhamento
-                    de requisitos e entrega de soluções customizadas. Cada projeto é uma oportunidade de criar algo que
-                    gera
-                    <strong>impacto real no negócio</strong> do cliente.
+                    Possuo forte atuação com React, Next.js, Node.js, TypeScript, Prisma e PostgreSQL, tendo entregue
+                    projetos de automação integrando fluxos do WhatsApp, n8n e APIs da OpenAI, além de dashboards
+                    full-stack implantados em ambientes AWS e Vercel com pipelines de CI/CD.
                 </p>
+
                 <p>
-                    Se você busca um desenvolvedor que não apenas escreve código limpo e bem documentado, mas que também
-                    pensa
-                    estrategicamente sobre como otimizar seus processos, vamos conversar!
+                    Em projetos recentes, automações implementadas reduziram operações manuais em aproximadamente
+                    <strong>40%</strong>, aumentando a previsibilidade, a produtividade e a capacidade de escala dos
+                    sistemas.
                 </p>
+
+                <p>
+                    Tenho especial interesse em funções nas quais a Inteligência Artificial é aplicada para resolver
+                    problemas operacionais concretos, aprimorar a tomada de decisão e ampliar a produtividade em escala.
+                </p>
+
             </div>
         </div>
     </section>
@@ -258,15 +288,15 @@
                 <h4>Ferramentas & DevOps</h4>
                 <div class="skill">
                     <p>Git & GitHub</p>
-                    <div class="progress"><span data-width="90%"></span></div>
+                    <div class="progress"><span data-width="95%"></span></div>
                 </div>
                 <div class="skill">
                     <p>Docker (Básico)</p>
-                    <div class="progress"><span data-width="75%"></span></div>
+                    <div class="progress"><span data-width="85%"></span></div>
                 </div>
                 <div class="skill">
                     <p>GitHub Actions (CI/CD)</p>
-                    <div class="progress"><span data-width="75%"></span></div>
+                    <div class="progress"><span data-width="95%"></span></div>
                 </div>
             </div>
 
@@ -292,19 +322,39 @@
     <section class="carater reveal">
         <div class="valores">
             <h3>Meus Valores</h3>
-            <p><strong>Compromisso com cada projeto:</strong> Cada cliente merece atenção total e soluções customizadas.
+            <br>
+            <p>
+                <strong>Compromisso real com cada projeto:</strong> Encaro cada trabalho como uma parceria,
+                dedicando atenção total para entender o contexto, as dores e os objetivos de cada cliente.
             </p>
-            <p><strong>Código limpo e organizado:</strong> Facilita manutenção, escalabilidade e colaboração em equipe.
+
+            <p>
+                <strong>Código limpo e sustentável:</strong> Desenvolvo soluções organizadas e bem estruturadas,
+                facilitando manutenção, evolução do sistema e colaboração entre equipes ao longo do tempo.
             </p>
-            <p><strong>Aprendizado contínuo:</strong> Tecnologia evolui rapidamente; estou sempre me atualizando.</p>
-            <p><strong>Foco em resultados:</strong> O objetivo é gerar impacto real no negócio do cliente.</p>
-            <p><strong>Excelente comunicação:</strong> Trabalho transparente e alinhado com as expectativas do cliente.
+
+            <p>
+                <strong>Aprendizado contínuo e aplicado:</strong> A tecnologia evolui rapidamente, e eu acompanho
+                essa evolução para aplicar soluções atuais, seguras e realmente úteis no dia a dia das pessoas.
             </p>
+
+            <p>
+                <strong>Foco em impacto, não apenas entrega:</strong> Mais do que finalizar tarefas,
+                busco gerar resultados concretos que melhorem processos, reduzam esforço manual
+                e tragam eficiência real ao negócio.
+            </p>
+
+            <p>
+                <strong>Comunicação clara e humana:</strong> Acredito que bons projetos nascem de conversas abertas.
+                Trabalho de forma transparente, alinhando expectativas e garantindo que todos entendam cada etapa do
+                processo.
+            </p>
+
         </div>
     </section>
-
+    <button id="btn-topo" aria-label="Voltar ao topo">↑</button>
     <!-- FOOTER -->
-    <footer>
+    <footer class="">
         <p>© 2025 - Portfólio Yerijhon Rian | Full Stack Developer & Especialista em Automação</p>
         <p>
             <a href="https://www.linkedin.com/in/yerijhonrian" target="_blank">LinkedIn</a> |
