@@ -3,26 +3,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-  entry.target.classList.add('visible');
+        entry.target.classList.add('visible');
 
-  if (
-    entry.target.classList.contains('skill-section') &&
-    !entry.target.dataset.animated
-  ) {
-    const progressBars = entry.target.querySelectorAll('.progress span');
+        if (
+          entry.target.classList.contains('skill-section') &&
+          !entry.target.dataset.animated
+        ) {
+          const progressBars = entry.target.querySelectorAll('.progress span');
 
-    progressBars.forEach(bar => {
-      const targetWidth = bar.getAttribute('data-width');
-      bar.style.setProperty('--progress-width', targetWidth);
-      bar.classList.add('progress-bar-animated');
-    });
+          progressBars.forEach(bar => {
+            const targetWidth = bar.getAttribute('data-width');
+            bar.style.setProperty('--progress-width', targetWidth);
+            bar.classList.add('progress-bar-animated');
+          });
 
-    entry.target.dataset.animated = "true";
-  }
+          entry.target.dataset.animated = "true";
+        }
 
-} else {
-  entry.target.classList.remove('visible');
-}
+      } else {
+        entry.target.classList.remove('visible');
+      }
 
     });
   };
@@ -53,7 +53,7 @@ function toggleSidebar() {
   const aberto = sidebar.classList.contains("active");
 
   // trava / libera scroll
- document.body.classList.toggle("sidebar-open", aberto);
+  document.body.classList.toggle("sidebar-open", aberto);
 
 
   // esconder/mostrar botão do menu

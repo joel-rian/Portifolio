@@ -16,7 +16,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: #e7f1ff;
   background: #02040a;
-  
+
 }
 
 /* ============================================================
@@ -527,6 +527,10 @@ body.sidebar-open {
   .carater {
     padding: 80px 40px;
   }
+}
+
+.carater {
+  padding-top: 200px;
 }
 
 /* Breakpoint Principal para Mobile (Tablets em Retrato e Celulares) */
